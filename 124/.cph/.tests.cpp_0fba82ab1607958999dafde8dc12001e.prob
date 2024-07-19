@@ -1,0 +1,1 @@
+{"name":"Local: tests","url":"e:\\codechef contest\\124\\tests.cpp","tests":[{"id":1709820614657,"input":"3\nabc\naabbcc\naaabbbccc","output":"a\n-1\n-1"},{"id":1709821073306,"input":"","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\codechef contest\\124\\tests.cpp","group":"local","local":true}
