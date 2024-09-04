@@ -29,10 +29,6 @@ signed main(){
         }
 
         int maxi = (n-cnt)-1;
-        // int ans = maxi*cnt;
-        // ans = ans+(maxi*(maxi-1))/2;
-        // cout << ans << endl;
-        // cout << maxi << " " << cnt << endl;
         int ans=0;
         i=cnt+1;
         while(cnt>0){
