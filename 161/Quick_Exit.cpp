@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-int mini=INT_MAX, mini2;
 int n, k;
 bool flag,flag1;
 
@@ -12,7 +11,6 @@ void solve1(unordered_map<int, vector<int>> &adj, int u, int *vis, vector<int> &
     vis[u]=1;
     if(u==n){
         flag1=false;
-        flag=false;
         return;
     }
     for(int &v: adj[u]){
@@ -68,29 +66,23 @@ signed main() {
             adj[v].push_back(u);
         }
 
-        vector<int> minDist;
-        mini2=INT_MAX;
-        int index=0;
-        for(int &v: adj[1]){
-            flag=true;
-            int cnt = solve(adj, v, 0, 0);
-            if(flag){
-                minDist.push_back(cnt);
-            }else{
-                index=v;
-            }
-        }
-
         flag1=true;
+        flag=true;
         int vis[n+1]={0};
-        vis[1]=1;
         vector<int> path;
-        path.push_back(1);
-        solve1(adj, index, vis, path);
+        solve1(adj, 1, vis, path);
+
+        // for(int i=0; i<path.size(); i++){
+        //     cout << path[i] << " ";
+        // }
+        // cout << endl;
+
+        vector<int> minDist;
+
         int m1 = path.size();
-        for(int i=1; i<m1-1; i++){  
+        for(int i=0; i<m1-1; i++){  
             for(int &v: adj[path[i]]){
-                if(v==path[i-1] || v==path[i+1])continue;
+                if((i>0 && v==path[i-1]) || v==path[i+1])continue;
                 int cnt = solve(adj, v, 1, path[i]);
                 minDist.push_back(cnt);
             }
@@ -98,6 +90,10 @@ signed main() {
 
         int m = minDist.size();
         sort(minDist.begin(), minDist.end());
+        // for(int i=0; i<m; i++){
+        //     cout << minDist[i] << " ";
+        // }
+        // cout << endl;
         int ans=m1;
         for(int i=0; i<(m-(k-1)); i++){
             ans+=minDist[i];

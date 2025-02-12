@@ -29,7 +29,6 @@ void solve() {
     while (q--) {
         cin >> p >> x;
 
-        // Remove old value from the respective set
         if (arr[p]) {
             if (p == 1 || p % 2 == 0) {
                 st[p] = false;
@@ -37,7 +36,7 @@ void solve() {
             } else {
                 st2[p] = false;
                 countSt2--;
-                if (p == maxIndexSt2) {  // Update max index of st2 if necessary
+                if (p == maxIndexSt2) {
                     maxIndexSt2 = 0;
                     for (int i = p - 1; i >= 1; i--) {
                         if (st2[i]) {
@@ -49,7 +48,6 @@ void solve() {
             }
         }
 
-        // Insert new value into the respective set
         arr[p] = x;
         if (x) {
             if (p == 1 || p % 2 == 0) {
@@ -62,7 +60,6 @@ void solve() {
             }
         }
 
-        // Compute the required condition
         int a = maxIndexSt2;
         int countStAfterA = countSt;
         for (int i = 1; i <= a; i++) {
